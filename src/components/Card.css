@@ -1,0 +1,17 @@
+#card-wrapper {
+  width: auto;
+  background: #fff;
+  min-height: 120px;
+  padding: 12px 32px;
+  margin-bottom: 24px;
+}
+
+#card-hr {
+  margin: 12px -32px;
+  border: 1px solid #e2e2e2;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 900;
+}
