@@ -1,3 +1,4 @@
+import Card from "./components/Card";
 import "./App.css";
 
 function App() {
@@ -6,9 +7,19 @@ function App() {
       <div id="header">
         <span className="title">Health Alerts</span>
       </div>
-      <hr></hr>
-      <div id="main-wrapper"></div>
-      <hr></hr>
+      <hr className="main-hr"></hr>
+      <div id="main-wrapper">
+        <Card title="Basic">
+          <div>
+            <label>Daily health report</label>
+          </div>
+          <div>
+            <label>Monitor service</label>
+          </div>
+        </Card>
+        <Card title="Advanced"></Card>
+      </div>
+      <hr className="main-hr"></hr>
       <div id="footer">
         <span className="button save">SAVE</span>
         <span className="button discard">Discard</span>
