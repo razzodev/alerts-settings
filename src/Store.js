@@ -2,7 +2,10 @@ import { Store } from "pullstate";
 
 const AlertStore = new Store({
   isAdvanced: true,
+  isEdit: false,
   basic: {
+    name: "basic",
+    isExpanded: true,
     daily: {
       name: "daily",
       active: true,
@@ -19,6 +22,8 @@ const AlertStore = new Store({
     },
   },
   advanced: {
+    name: "advanced",
+    isExpanded: true,
     diskStorage: {
       name: "diskStorage",
       active: true,
@@ -44,6 +49,7 @@ const AlertStore = new Store({
           value: "08:00",
         },
       },
+      selectedChildren: 1,
       children: {
         GB: {
           value: 1,
@@ -51,17 +57,13 @@ const AlertStore = new Store({
           type: "number",
           textAfter: "GB",
           active: true,
-          isCheckbox: true,
-          isLocked: true,
         },
         percentage: {
-          value: 0.05,
+          value: 5,
           name: "percentage",
           type: "number",
           textAfter: "%",
           active: false,
-          isCheckbox: true,
-          isLocked: false,
         },
       },
     },
