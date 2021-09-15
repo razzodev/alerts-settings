@@ -23,7 +23,7 @@ export const initialStore = {
   },
   advanced: {
     name: "advanced",
-    isExpanded: true,
+    isExpanded: false,
     diskStorage: {
       name: "diskStorage",
       active: true,
