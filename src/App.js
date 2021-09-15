@@ -35,15 +35,17 @@ function App() {
             textAfter="minutes before sending repetative email alerts"
           />
         </Card>
-        <Card title="Advanced" path={advanced}>
-          <Field
-            label={"Server data disk space"}
-            field={advanced.diskStorage}
-            path="advanced"
-            textBefore="Send daily health report at: "
-            textAfter="when disk space has dropped below:"
-          />
-        </Card>
+        {store.isAdvanced && (
+          <Card title="Advanced" path={advanced}>
+            <Field
+              label={"Server data disk space"}
+              field={advanced.diskStorage}
+              path="advanced"
+              textBefore="Send daily health report at: "
+              textAfter="when disk space has dropped below:"
+            />
+          </Card>
+        )}
         <div style={{ height: "50vh" }}></div>
       </div>
       <hr className="main-hr"></hr>
