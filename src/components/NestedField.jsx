@@ -28,16 +28,7 @@ function NestedField({ path, field, count, isActive }) {
     });
     edit();
   };
-  const {
-    active,
-    // name,
-    // isCheckbox,
-    type,
-    value,
-    // options,
-    textAfter,
-    // children,
-  } = field;
+  const { active, type, value, textAfter } = field;
 
   return (
     <div id="nestedWrapper">
