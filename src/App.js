@@ -7,6 +7,12 @@ function App() {
   const main = AlertStore.useState((s) => s);
   const basic = AlertStore.useState((s) => s.basic);
   const advanced = AlertStore.useState((s) => s.advanced);
+  const handleSave = () => {
+    AlertStore.update((s) => {
+      s.isEdit = false;
+    });
+    console.log(JSON.stringify(main, null, 2));
+  };
   return (
     <div className="App">
       <div id="header">
@@ -48,7 +54,7 @@ function App() {
       <div id="footer">
         <span
           className={`  button save ${!main.isEdit && "btn-disabled"}`}
-          onClick={() => main.isEdit && console.log(main)}
+          onClick={() => main.isEdit && handleSave()}
         >
           SAVE
         </span>
