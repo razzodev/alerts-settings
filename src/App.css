@@ -26,6 +26,10 @@ body {
   border: 1px solid var(--color-gary-light);
 }
 
+.disabled-text {
+  color: var(--color-gary-dark);
+}
+
 #header {
   height: 6vh;
   padding: 12px;
