@@ -1,37 +1,8 @@
 import React from "react";
-import AlertStore from "../Store";
 import NestedField from "./NestedField";
+import MultInputs from "./MultInputs";
+import AlertStore from "../Store";
 import { edit } from "../utils";
-
-function MultInputs({ path, field, isActive }) {
-  const updateInput = (e) => {
-    AlertStore.update((s) => {
-      s[path[0]][path[1]].value[field.name].value = e.target.value;
-    });
-    edit();
-  };
-
-  const { type, value, options } = field;
-  return (
-    <>
-      {type === "select" && (
-        <select disabled={!isActive} onChange={(e) => updateInput(e)}>
-          {options.map((i) => (
-            <option key={i}>{i}</option>
-          ))}
-        </select>
-      )}
-      {type !== "select" && (
-        <input
-          type={type}
-          value={value}
-          onChange={(e) => updateInput(e)}
-          disabled={!isActive}
-        />
-      )}
-    </>
-  );
-}
 
 function Field({ label, field, path, textBefore, textAfter }) {
   const toggleActive = () => {
@@ -76,6 +47,7 @@ function Field({ label, field, path, textBefore, textAfter }) {
           <input
             type={type}
             value={value}
+            min={type === "number" && 0.1}
             onChange={(e) => updateInput(e)}
             disabled={!active}
           />

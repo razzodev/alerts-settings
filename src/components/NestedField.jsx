@@ -51,6 +51,7 @@ function NestedField({ path, field, count, isActive }) {
       <input
         type={type}
         value={value}
+        min={type === "number" && 0.1}
         onChange={(e) => updateInput(e)}
         disabled={!isActive || !active}
       />
