@@ -1,40 +1,62 @@
 import React from "react";
 import AlertStore from "../Store";
-function NestedField({ path, field }) {
+import "./NestedField.css";
+import { edit } from "../utils";
+function NestedField({ path, field, count, isActive }) {
   const toggleActive = () => {
     AlertStore.update((s) => {
       s[path[0]][path[1]].children[field.name].active = !field.active;
     });
+    field.active && increment();
+    !field.active && decrement();
+    edit();
   };
+
+  const increment = () =>
+    AlertStore.update((s) => {
+      s[path[0]][path[1]].selectedChildren++;
+    });
+
+  const decrement = () =>
+    AlertStore.update((s) => {
+      s[path[0]][path[1]].selectedChildren--;
+    });
 
   const updateInput = (e) => {
     AlertStore.update((s) => {
-      s[path][field.name].value = e.target.value;
+      s[path[0]][path[1]].children[field.name].value = e.target.value;
     });
+    edit();
   };
   const {
     active,
-    name,
-    isCheckbox,
+    // name,
+    // isCheckbox,
     type,
     value,
-    options,
+    // options,
     textAfter,
-    children,
+    // children,
   } = field;
 
   return (
-    <div>
-      {isCheckbox && (
-        <input type="checkbox" checked={active} onChange={toggleActive} />
-      )}
+    <div id="nestedWrapper">
+      <input
+        id="nestedCheckbox"
+        type="checkbox"
+        checked={active}
+        onChange={toggleActive}
+        disabled={!isActive || (active && count === 1)}
+      />
       <input
         type={type}
         value={value}
         onChange={(e) => updateInput(e)}
-        disabled={!active}
+        disabled={!isActive || !active}
       />
-      <span className={!active && "disabled-text"}>{textAfter}</span>
+      <span className={`${(!isActive || !active) && "disabled-text"} span`}>
+        {textAfter}
+      </span>
     </div>
   );
 }
