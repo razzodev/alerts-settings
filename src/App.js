@@ -4,6 +4,7 @@ import Field from "./components/Field";
 import "./App.css";
 
 function App() {
+  const main = AlertStore.useState((s) => s);
   const basic = AlertStore.useState((s) => s.basic);
   const advanced = AlertStore.useState((s) => s.advanced);
   return (
@@ -13,7 +14,7 @@ function App() {
       </div>
       <hr className="main-hr"></hr>
       <div id="main-wrapper">
-        <Card title="Basic">
+        <Card title="Basic" path={basic}>
           <div>
             <Field
               label={"Daily health report"}
@@ -32,20 +33,28 @@ function App() {
             />
           </div>
         </Card>
-        <Card title="Advanced">
+        <Card title="Advanced" path={advanced}>
           <Field
             label={"Server data disk space"}
             field={advanced.diskStorage}
             path="advanced"
-            textBefore="Send daily health report at:"
+            textBefore="Send daily health report at: "
             textAfter="when disk space has dropped below:"
           />
         </Card>
+        <div style={{ height: "50vh" }}></div>
       </div>
       <hr className="main-hr"></hr>
       <div id="footer">
-        <span className="button save">SAVE</span>
-        <span className="button discard">Discard</span>
+        <span
+          className={`  button save ${!main.isEdit && "btn-disabled"}`}
+          onClick={() => main.isEdit && console.log(main)}
+        >
+          SAVE
+        </span>
+        <span className={` ${!main.isEdit && "btn-disabled"} button discard`}>
+          Discard
+        </span>
       </div>
     </div>
   );
