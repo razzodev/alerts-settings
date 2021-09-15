@@ -1,4 +1,4 @@
-import AlertStore from "./Store";
+import AlertStore, { initialStore } from "./Store";
 import Card from "./components/Card";
 import Field from "./components/Field";
 import "./App.css";
@@ -12,6 +12,9 @@ function App() {
       s.isEdit = false;
     });
     console.log(JSON.stringify(store, null, 2));
+  };
+  const handleDiscard = () => {
+    AlertStore.update((s) => (s = { ...initialStore }));
   };
   return (
     <div className="App">
@@ -56,7 +59,10 @@ function App() {
         >
           SAVE
         </span>
-        <span className={`${!store.isEdit && "btn-disabled"} button discard`}>
+        <span
+          className={`${!store.isEdit && "btn-disabled"} button discard`}
+          onClick={() => store.isEdit && handleDiscard()}
+        >
           Discard
         </span>
       </div>

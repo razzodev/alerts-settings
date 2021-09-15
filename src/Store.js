@@ -1,6 +1,6 @@
 import { Store } from "pullstate";
 
-const AlertStore = new Store({
+export const initialStore = {
   isAdvanced: true,
   isEdit: false,
   basic: {
@@ -68,6 +68,8 @@ const AlertStore = new Store({
       },
     },
   },
+};
+const AlertStore = new Store({
+  ...initialStore,
 });
-
 export default AlertStore;
