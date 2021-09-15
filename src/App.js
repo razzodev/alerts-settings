@@ -21,23 +21,19 @@ function App() {
       <hr className="main-hr"></hr>
       <div id="main-wrapper">
         <Card title="Basic" path={basic}>
-          <div>
-            <Field
-              label={"Daily health report"}
-              field={basic.daily}
-              path="basic"
-              textBefore="Send daily health report at:"
-            />
-          </div>
-          <div>
-            <Field
-              label={"Monitor service"}
-              field={basic.monitor}
-              path="basic"
-              textBefore="Wait"
-              textAfter="minutes before sending repetative email alerts"
-            />
-          </div>
+          <Field
+            label={"Daily health report"}
+            field={basic.daily}
+            path="basic"
+            textBefore="Send daily health report at:"
+          />
+          <Field
+            label={"Monitor service"}
+            field={basic.monitor}
+            path="basic"
+            textBefore="Wait"
+            textAfter="minutes before sending repetative email alerts"
+          />
         </Card>
         <Card title="Advanced" path={advanced}>
           <Field
@@ -53,12 +49,12 @@ function App() {
       <hr className="main-hr"></hr>
       <div id="footer">
         <span
-          className={`  button save ${!main.isEdit && "btn-disabled"}`}
+          className={`${!main.isEdit && "btn-disabled"} button save`}
           onClick={() => main.isEdit && handleSave()}
         >
           SAVE
         </span>
-        <span className={` ${!main.isEdit && "btn-disabled"} button discard`}>
+        <span className={`${!main.isEdit && "btn-disabled"} button discard`}>
           Discard
         </span>
       </div>
