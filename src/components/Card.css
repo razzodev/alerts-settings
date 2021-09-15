@@ -1,14 +1,29 @@
 #card-wrapper {
   width: auto;
   background: #fff;
-  min-height: 120px;
   padding: 12px 32px;
   margin-bottom: 24px;
+  border-radius: 6px;
 }
 
+#card-wrapper .title {
+  font-size: 22px;
+  cursor: pointer;
+}
+#card-wrapper .title.symbol {
+  margin-right: 8px;
+}
+#card-header {
+  display: flex;
+  align-items: baseline;
+}
+#card-expanded {
+  min-height: 120px;
+}
 #card-hr {
   margin: 12px -32px;
-  border: 1px solid #e2e2e2;
+  margin-bottom: 6px;
+  border-top: 1px solid #e2e2e2;
 }
 
 label {
