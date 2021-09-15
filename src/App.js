@@ -4,14 +4,14 @@ import Field from "./components/Field";
 import "./App.css";
 
 function App() {
-  const main = AlertStore.useState((s) => s);
+  const store = AlertStore.useState((s) => s);
   const basic = AlertStore.useState((s) => s.basic);
   const advanced = AlertStore.useState((s) => s.advanced);
   const handleSave = () => {
     AlertStore.update((s) => {
       s.isEdit = false;
     });
-    console.log(JSON.stringify(main, null, 2));
+    console.log(JSON.stringify(store, null, 2));
   };
   return (
     <div className="App">
@@ -49,12 +49,12 @@ function App() {
       <hr className="main-hr"></hr>
       <div id="footer">
         <span
-          className={`${!main.isEdit && "btn-disabled"} button save`}
-          onClick={() => main.isEdit && handleSave()}
+          className={`${!store.isEdit && "btn-disabled"} button save`}
+          onClick={() => store.isEdit && handleSave()}
         >
           SAVE
         </span>
-        <span className={`${!main.isEdit && "btn-disabled"} button discard`}>
+        <span className={`${!store.isEdit && "btn-disabled"} button discard`}>
           Discard
         </span>
       </div>
