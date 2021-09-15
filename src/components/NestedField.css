@@ -1,0 +1,12 @@
+#nestedWrapper {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+}
+#nestedCheckbox {
+  margin-left: 40px;
+}
+
+#nestedCheckbox:disabled {
+  background-color: blue;
+}
