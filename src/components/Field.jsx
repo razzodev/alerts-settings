@@ -80,8 +80,9 @@ function Field({ label, field, path, textBefore, textAfter }) {
             disabled={!active}
           />
         ) : (
-          Object.keys(value).map((child) => (
+          Object.keys(value).map((child, i) => (
             <MultInputs
+              key={value[child].name + i}
               path={[path, name]}
               field={value[child]}
               isActive={active}
@@ -100,8 +101,9 @@ function Field({ label, field, path, textBefore, textAfter }) {
         </span>
       </div>
       {children &&
-        Object.keys(children).map((child) => (
+        Object.keys(children).map((child, i) => (
           <NestedField
+            key={children[child].name + i}
             path={[path, name]}
             field={children[child]}
             count={selectedChildren}
